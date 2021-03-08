@@ -1,4 +1,4 @@
-# Project to create a interactive website with React
+# Project to create a interactive website with Gatsby
 
 A project between UX and Frontend students at Hyper Island where we are developing an website for Ricola
 
