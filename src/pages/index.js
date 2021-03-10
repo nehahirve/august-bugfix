@@ -1,38 +1,30 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import Articles from "../components/articles"
 /* import SEO from "../components/seo" */
 
-
-
-
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  console.log(posts)
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        {/* <SEO title="All posts" /> */}
-
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
-
+  // console.log(posts)
   return (
     <Layout location={location} title={siteTitle}>
-      {/* <SEO title="All posts" /> */}
-
-
-      <Articles posts={posts} />
+      {posts.map(post => {
+        console.log(post.frontmatter)
+        console.log(post.frontmatter.helloImage)
+        return (
+          <>
+            <p>{post.frontmatter.title}</p>
+            <Img
+              fluid={post.frontmatter.helloImage.childImageSharp.fluid}
+              alt="A corgi smiling happily"
+            />
+          </>
+        )
+      })}
     </Layout>
   )
 }
@@ -46,7 +38,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark {
       nodes {
         excerpt
         fields {
@@ -56,7 +48,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
-          featuredImage {
+          helloImage {
             childImageSharp {
               fluid(maxWidth: 800) {
                 ...GatsbyImageSharpFluid

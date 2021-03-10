@@ -3,17 +3,14 @@ module.exports = {
     title: `Sustainability Magazine`,
     author: {
       name: `Ricola`,
-
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -95,13 +92,7 @@ module.exports = {
                       title
                       date
                       description
-                      featuredImage {
-                        childImageSharp {
-                          fluid(maxWidth: 800) {
-                            ...GatsbyImageSharpFluid
-                          }
-                        }
-                      }
+                      
                     }
                   }
                 }
