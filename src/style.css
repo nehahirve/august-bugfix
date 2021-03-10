@@ -64,21 +64,23 @@
   align-content: space-between;
   align-items: stretch;
   margin: auto;
+  list-style: none;
 }
 .articleLink {
-  background-color: var(--main-button-bg);
   border-radius: 0 0 10px 10px;
   margin-bottom: 2rem;
   transition: background-color 0.2s ease;
 }
 
-.articleLink:hover {
+.articles:hover {
   background-color: var(--hover-button-bg);
 }
 
 .articles {
   list-style-type: none;
   width: 20rem;
+  background-color: var(--main-button-bg);
+  min-height: 200px;
 }
 
 .articlesList a {
