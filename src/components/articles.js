@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 
 const Articles = ({ posts }) => {
@@ -9,6 +9,7 @@ const Articles = ({ posts }) => {
         <ol className="articlesList">
             {posts.map(post => {
                 const title = post.frontmatter.title || post.fields.slug
+                const image = getImage(post.frontmatter.featuredImage)
                 return (
                     <Link to={post.fields.slug} key={post.fields.slug} itemProp="url" className="articleLink">
                         <li className="articles">
@@ -17,7 +18,7 @@ const Articles = ({ posts }) => {
                                 itemScope
                                 itemType="http://schema.org/Article"
                             >
-
+                                <GatsbyImage image={image} alt="AAAAA" />
                                 <header className="articleHeader">
                                     <h2 className="articleH2">
                                         <span itemProp="headline">{title}</span>

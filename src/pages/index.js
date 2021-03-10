@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Articles from "../components/articles"
-import SEO from "../components/seo"
+/* import SEO from "../components/seo" */
 
 
 
@@ -15,7 +15,7 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
+        {/* <SEO title="All posts" /> */}
 
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
@@ -29,7 +29,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      {/* <SEO title="All posts" /> */}
 
 
       <Articles posts={posts} />
@@ -58,9 +58,8 @@ export const pageQuery = graphql`
           description
           featuredImage {
             childImageSharp {
-              fluid {
-                src
-                srcSet
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
               }
             }
           }

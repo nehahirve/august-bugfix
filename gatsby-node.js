@@ -79,7 +79,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
-      
+
     }
 
     type Author {
@@ -94,7 +94,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       fields: Fields
-      
+
     }
 
     type Frontmatter {
@@ -104,8 +104,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       featuredImage: File
     }
 
-    
-    
+
+
 
     type Fields {
       slug: String
